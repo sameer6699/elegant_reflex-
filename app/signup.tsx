@@ -23,19 +23,13 @@ export default function SignUpScreen() {
     // Remove all non-digit characters
     const cleaned = text.replace(/\D/g, '');
     
-    // Limit to 10 digits
+    // Limit to 10 digits (Indian mobile number format)
     if (cleaned.length > 10) {
       return cleaned.slice(0, 10);
     }
     
-    // Format as (XXX) XXX-XXXX
-    if (cleaned.length <= 3) {
-      return cleaned;
-    } else if (cleaned.length <= 6) {
-      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`;
-    } else {
-      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6)}`;
-    }
+    // Return as is (Indian numbers are typically 10 digits without formatting)
+    return cleaned;
   };
 
   const handleMobileNumberChange = (text: string) => {
@@ -137,16 +131,16 @@ export default function SignUpScreen() {
                   style={styles.icon}
                 />
                 <View style={styles.countryCodeContainer}>
-                  <Text style={styles.countryCode}>+1</Text>
+                  <Text style={styles.countryCode}>+91</Text>
                 </View>
                 <TextInput
                   style={styles.mobileInput}
-                  placeholder="(123) 456-7890"
+                  placeholder="Enter your mobile number"
                   placeholderTextColor={theme.colors.textSecondary}
                   value={mobileNumber}
                   onChangeText={handleMobileNumberChange}
                   keyboardType="phone-pad"
-                  maxLength={14}
+                  maxLength={10}
                   autoComplete="tel"
                 />
               </View>

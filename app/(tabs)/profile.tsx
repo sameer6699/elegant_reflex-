@@ -26,10 +26,8 @@ import {
   Moon,
   Sun,
   Shield,
-  Lock,
   CreditCard,
   HelpCircle,
-  Info,
   LogOut,
   Trash2,
   Camera,
@@ -49,11 +47,11 @@ export default function ProfileScreen() {
 
   // Mock user profile data
   const userProfile = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '+1 (555) 123-4567',
+    name: 'Aditya Malhotra',
+    email: 'aditya.malhotra@example.com',
+    phone: '+91 98765 43210',
     joinDate: 'January 15, 2024',
-    location: 'New York, USA',
+    location: 'Mumbai, India',
     avatar: null, // In real app, this would be an image URI
     level: 12,
     totalGames: 142,
@@ -171,8 +169,12 @@ export default function ProfileScreen() {
             </View>
           </View>
 
-          {/* Stats Cards */}
-          <View style={styles.statsContainer}>
+          {/* Stats Cards - Horizontal ScrollView */}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.statsScrollContainer}
+            style={styles.statsScrollView}>
             <View style={styles.statCard}>
               <View style={[styles.statIcon, styles.statIconPrimary]}>
                 <Trophy size={20} color={theme.colors.primary} />
@@ -212,7 +214,7 @@ export default function ProfileScreen() {
                 <Text style={styles.statLabel}>Winnings</Text>
               </View>
             </View>
-          </View>
+          </ScrollView>
 
           {/* Profile Details */}
           <View style={styles.detailsCard}>
@@ -362,18 +364,6 @@ export default function ProfileScreen() {
 
             <TouchableOpacity style={styles.settingItem}>
               <View style={styles.settingLeft}>
-                <Lock size={24} color={theme.colors.primary} />
-                <View style={styles.settingText}>
-                  <Text style={styles.settingLabel}>Change Password</Text>
-                  <Text style={styles.settingDescription}>
-                    Update your account password
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.settingItem}>
-              <View style={styles.settingLeft}>
                 <CreditCard size={24} color={theme.colors.primary} />
                 <View style={styles.settingText}>
                   <Text style={styles.settingLabel}>Payment Methods</Text>
@@ -419,17 +409,6 @@ export default function ProfileScreen() {
                 </View>
               </View>
             </TouchableOpacity>
-
-            <View style={styles.infoCard}>
-              <Info size={20} color={theme.colors.primary} />
-              <View style={styles.infoContent}>
-                <Text style={styles.infoTitle}>Elegant Reflex</Text>
-                <Text style={styles.infoText}>Version 1.0.0</Text>
-                <Text style={styles.infoDescription}>
-                  A minimal and professional reflex game
-                </Text>
-              </View>
-            </View>
           </View>
 
           {/* Logout */}
@@ -606,15 +585,18 @@ const styles = StyleSheet.create({
     fontFamily: theme.fonts.bodySemiBold,
     color: theme.colors.primary,
   },
-  statsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
+  statsScrollView: {
+    marginHorizontal: -20,
+    paddingHorizontal: 20,
     marginBottom: 20,
   },
+  statsScrollContainer: {
+    flexDirection: 'row',
+    gap: 12,
+    paddingRight: 20,
+  },
   statCard: {
-    flex: 1,
-    minWidth: '48%',
+    width: 160,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: theme.colors.white,
@@ -623,6 +605,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: theme.colors.surface,
     gap: 12,
+    minHeight: 80,
   },
   statIcon: {
     width: 48,
@@ -737,37 +720,6 @@ const styles = StyleSheet.create({
   },
   dangerText: {
     color: theme.colors.error,
-  },
-  infoCard: {
-    flexDirection: 'row',
-    backgroundColor: theme.colors.white,
-    borderRadius: theme.radius.button,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: theme.colors.surface,
-    alignItems: 'flex-start',
-  },
-  infoContent: {
-    marginLeft: 12,
-    flex: 1,
-  },
-  infoTitle: {
-    fontSize: 16,
-    fontFamily: theme.fonts.headingBold,
-    color: theme.colors.primary,
-    marginBottom: 4,
-  },
-  infoText: {
-    fontSize: 13,
-    fontFamily: theme.fonts.body,
-    color: theme.colors.textSecondary,
-    marginBottom: 4,
-  },
-  infoDescription: {
-    fontSize: 12,
-    fontFamily: theme.fonts.body,
-    color: theme.colors.textSecondary,
-    lineHeight: 18,
   },
   logoutButton: {
     backgroundColor: theme.colors.error + '10',

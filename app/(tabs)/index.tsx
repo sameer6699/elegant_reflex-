@@ -13,7 +13,7 @@ export default function HomeScreen() {
   const [notificationVisible, setNotificationVisible] = useState(false);
 
   // Mock user data (in real app, this would come from state/context)
-  const userName = 'John Doe';
+  const userName = 'Aditya Malhotra';
   const walletBalance = 1250;
 
   // Mock game statistics
@@ -135,9 +135,12 @@ export default function HomeScreen() {
           {/* Top Row: User Info and Notification */}
           <View style={styles.headerTopRow}>
             <View style={styles.userInfoSection}>
-              <View style={styles.userIconContainer}>
+              <TouchableOpacity
+                style={styles.userIconContainer}
+                onPress={() => router.push('/profile')}
+                activeOpacity={0.7}>
                 <User size={22} color={theme.colors.white} />
-              </View>
+              </TouchableOpacity>
               <View style={styles.userTextContainer}>
                 <Text style={styles.greeting}>Hello,</Text>
                 <Text style={styles.userName}>{userName}</Text>
