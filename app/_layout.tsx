@@ -13,6 +13,7 @@ import {
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
 import { SplashScreen } from 'expo-router';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -38,14 +39,16 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <AuthProvider>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
         <Stack.Screen name="login" />
+        <Stack.Screen name="signup" />
+        <Stack.Screen name="otp" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
-    </>
+    </AuthProvider>
   );
 }
