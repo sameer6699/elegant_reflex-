@@ -47,7 +47,8 @@ export default function OTPScreen() {
   const formatMobileNumber = (number: string) => {
     const cleaned = number.replace(/\D/g, '');
     if (cleaned.length === 10) {
-      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6)}`;
+      // Format Indian mobile number: XXXX XXXX XX
+      return `${cleaned.slice(0, 5)} ${cleaned.slice(5)}`;
     }
     return number;
   };
@@ -157,7 +158,7 @@ export default function OTPScreen() {
               We've sent a 6-digit code to
             </Text>
             <Text style={styles.mobileNumber}>
-              +1 {formatMobileNumber(mobileNumber || '')}
+              +91 {formatMobileNumber(mobileNumber || '')}
             </Text>
           </View>
 
@@ -230,13 +231,12 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
+    paddingBottom: 40,
   },
   content: {
-    flex: 1,
     paddingHorizontal: 32,
-    paddingTop: 60,
-    paddingBottom: 40,
-    justifyContent: 'center',
+    paddingTop: 80,
+    paddingBottom: 60,
   },
   backButton: {
     position: 'absolute',
@@ -246,9 +246,8 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   header: {
-    marginBottom: 48,
+    marginBottom: 32,
     alignItems: 'center',
-    marginTop: 40,
   },
   title: {
     fontSize: 32,
@@ -274,7 +273,7 @@ const styles = StyleSheet.create({
   otpContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 32,
+    marginBottom: 24,
     gap: 12,
   },
   otpInput: {
@@ -295,7 +294,7 @@ const styles = StyleSheet.create({
   },
   timerContainer: {
     alignItems: 'center',
-    marginBottom: 32,
+    marginBottom: 24,
   },
   timerWrapper: {
     flexDirection: 'row',
