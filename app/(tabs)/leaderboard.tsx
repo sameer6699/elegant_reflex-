@@ -4,11 +4,11 @@ import { Trophy } from 'lucide-react-native';
 import { theme } from '@/constants/theme';
 import LeaderboardSection from '@/components/ui/LeaderboardSection';
 
-// Mock leaderboard data
+// Mock leaderboard data with Indian player names
 const leaderboardData = [
   {
     rank: 1,
-    playerName: 'Alex Champion',
+    playerName: 'Rahul Verma',
     score: 12500,
     change: 0,
     gamesPlayed: 245,
@@ -17,7 +17,7 @@ const leaderboardData = [
   },
   {
     rank: 2,
-    playerName: 'Sarah Pro',
+    playerName: 'Kavya Reddy',
     score: 11200,
     change: 1,
     gamesPlayed: 198,
@@ -26,7 +26,7 @@ const leaderboardData = [
   },
   {
     rank: 3,
-    playerName: 'Mike Master',
+    playerName: 'Aryan Kapoor',
     score: 9800,
     change: -1,
     gamesPlayed: 189,
@@ -35,7 +35,7 @@ const leaderboardData = [
   },
   {
     rank: 4,
-    playerName: 'Emma Winner',
+    playerName: 'Isha Joshi',
     score: 8750,
     change: 2,
     gamesPlayed: 156,
@@ -44,7 +44,7 @@ const leaderboardData = [
   },
   {
     rank: 5,
-    playerName: 'John Doe',
+    playerName: 'Aditya Malhotra',
     score: 8200,
     change: 0,
     gamesPlayed: 142,
@@ -54,7 +54,7 @@ const leaderboardData = [
   },
   {
     rank: 6,
-    playerName: 'Lisa Expert',
+    playerName: 'Neha Agarwal',
     score: 7650,
     change: -2,
     gamesPlayed: 134,
@@ -63,7 +63,7 @@ const leaderboardData = [
   },
   {
     rank: 7,
-    playerName: 'David Ace',
+    playerName: 'Rohan Mehta',
     score: 7200,
     change: 1,
     gamesPlayed: 128,

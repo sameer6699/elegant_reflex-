@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Trophy, Medal, Crown, Calendar, ArrowRight } from 'lucide-react-native';
+import { Trophy, Medal, Crown, Calendar } from 'lucide-react-native';
 import { theme } from '@/constants/theme';
 import LeaderboardCard from './LeaderboardCard';
 
@@ -59,30 +59,9 @@ export default function LeaderboardSection({
 
   return (
     <View style={styles.container}>
-      {/* Header Section */}
-      <View style={styles.header}>
-        <View style={styles.headerTop}>
-          <View style={styles.headerLeft}>
-            <View style={styles.iconContainer}>
-              <Trophy size={24} color={theme.colors.primary} />
-            </View>
-            <View>
-              <Text style={styles.title}>Leaderboard</Text>
-              <Text style={styles.subtitle}>
-                {entries.length} {entries.length === 1 ? 'player' : 'players'} competing
-              </Text>
-            </View>
-          </View>
-          {onViewAll && (
-            <TouchableOpacity style={styles.viewAllButton} onPress={onViewAll}>
-              <Text style={styles.viewAllText}>View All</Text>
-              <ArrowRight size={16} color={theme.colors.primary} />
-            </TouchableOpacity>
-          )}
-        </View>
-
-        {/* Time Period Filter */}
-        {onTimePeriodChange && (
+      {/* Time Period Filter */}
+      {onTimePeriodChange && (
+        <View style={styles.filterWrapper}>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -109,8 +88,8 @@ export default function LeaderboardSection({
               </TouchableOpacity>
             ))}
           </ScrollView>
-        )}
-      </View>
+        </View>
+      )}
 
       {/* Top Player Highlight Card */}
       {topPlayer && (
@@ -242,51 +221,8 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 32,
   },
-  header: {
+  filterWrapper: {
     marginBottom: 20,
-  },
-  headerTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 16,
-  },
-  headerLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-  },
-  iconContainer: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: theme.colors.primary + '15',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 12,
-  },
-  title: {
-    fontSize: 20,
-    fontFamily: theme.fonts.headingBold,
-    color: theme.colors.primary,
-    marginBottom: 4,
-  },
-  subtitle: {
-    fontSize: 13,
-    fontFamily: theme.fonts.body,
-    color: theme.colors.textSecondary,
-  },
-  viewAllButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-  },
-  viewAllText: {
-    fontSize: 14,
-    fontFamily: theme.fonts.bodySemiBold,
-    color: theme.colors.primary,
   },
   filterContainer: {
     flexDirection: 'row',
